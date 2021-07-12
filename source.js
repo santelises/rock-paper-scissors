@@ -8,9 +8,6 @@ function computerPlay(){
 }
 
 function playRound(playerSelection, computerSelection){
-    
-    // let playerScore = 0;
-
     if (playerSelection === computerSelection){
         return "It's a tie";
         } else if (playerSelection === 'paper'){
