@@ -9,7 +9,7 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
-        return "It's a tie";
+        return `It's a tie \n Your score: ${playerScore} \n Computer score: ${computerScore}`;
         } else if (playerSelection === 'paper'){
             if (computerSelection === "rock"){
                 playerScore += 1;
