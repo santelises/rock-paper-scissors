@@ -33,9 +33,9 @@ function playRound(playerSelection, computerSelection){
         }
         
     if (playerScore > computerScore){
-        return `You Won! ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`
+        return `You Won! ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} \n Your score: ${playerScore} \n Computer score: ${computerScore}`
     } else {
-        return `You Lost! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)}` 
+        return `You Lost! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)} \n Your score: ${playerScore} \n Computer score: ${computerScore}` 
         }
 }
 
@@ -49,7 +49,7 @@ function game(){
         console.log(playRound(playerSelection, computerSelection));
         rounds +=1;
     } if (playerScore > computerScore){
-        console.log("You won the most rounds");
+        console.log("You won the most rounds!");
     } else {
         console.log("You lost to a computer... :(")
     }
