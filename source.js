@@ -1,4 +1,3 @@
-const prompt = require('prompt-sync')();
 
 function computerPlay(){
     let options = ['rock', "paper", "scissors"];
@@ -7,55 +6,118 @@ function computerPlay(){
     return selected;
 }
 
-function playRound(playerSelection, computerSelection){
+function compare(playerSelection, computerSelection){
+    let message =[];
     if (playerSelection === computerSelection){
-        return `It's a tie \n Your score: ${playerScore} \n Computer score: ${computerScore}`;
+        message.push("It's a tie");
+
         } else if (playerSelection === 'paper'){
             if (computerSelection === "rock"){
                 playerScore += 1;
+                message.push("You Won");
             }else{
                 computerScore +=1
-                };
+                message.push("You Lost");
+
+                }
 
         } else if (playerSelection === 'rock'){
             if (computerSelection === "scissors"){
                 playerScore += 1;
+                message.push("You Won");
+
             }else{
                 computerScore +=1
+                message.push("You Lost");
+
                 };
         
         } else if (playerSelection === "scissors"){
             if (computerSelection === "paper"){
                 playerScore +=1;
+                message.push("You Won");
+
+
             }else{
-                computerScore +=1
+                computerScore +=1;
+                message.push("You Lost");
                 };
         }
+        resultDisplay.textContent = message[0];
+
+        switch (message[0]){
+            case "It's a tie":
+                    resultDisplay.style.cssText = "background-color:#e5e5e5; color: #808080";
+                    break;
+            case "You Lost":
+                    resultDisplay.style.cssText = "background-color:lightpink; color: red"; 
+                    break;
+            case "You Won":
+                    resultDisplay.style.cssText = "background-color:mediumaquamarine; color: green";  
+                    break;
         
-    if (playerScore > computerScore){
-        return `You Won! ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} \n Your score: ${playerScore} \n Computer score: ${computerScore}`
-    } else {
-        return `You Lost! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)} \n Your score: ${playerScore} \n Computer score: ${computerScore}` 
+    }
+        
+    }
+
+
+function updateScore(){
+    
+    document.getElementById("p-score").textContent = playerScore;
+    document.getElementById("c-score").textContent = computerScore;}
+
+function checkGameOver(){
+
+    return (playerScore === 5 || computerScore === 5);
+}
+
+function finalScore() {
+        if (playerScore > computerScore) {
+            resultDisplay.textContent = "You won the most rounds!";
+            resultDisplay.style.cssText = "background-color: green; color: white; font-weight: bold; ";
+        }
+        else {
+            resultDisplay.textContent = "You lost to a computer ...";
+            resultDisplay.style.cssText = "background-color: red; color: white; font-weight: bold;  ";}
+
+        playerScore = 0;
+        computerScore = 0; 
+        updateScore();
+        
+        }  
+        
+        
+        
+function round(e){
+        
+        let playerSelection = e.target.className;
+        const computerSelection = computerPlay();
+
+        player.textContent = "You chose: " + playerSelection;
+        computer.textContent = "Computer chose: " + computerSelection;
+
+        compare(playerSelection, computerSelection);
+        updateScore();
+        if(checkGameOver()){
+            finalScore();
         }
 }
 
-function game(){
-    let rounds = 0; 
-    while (rounds < 5){
-        let playerInput = prompt("Rock, Paper, Scissors? ");
-        let playerSelection = playerInput.toLowerCase();
-        const computerSelection = computerPlay();
+let roundSummary = document.querySelector(".summary");
 
-        console.log(playRound(playerSelection, computerSelection));
-        rounds +=1;
-    } if (playerScore > computerScore){
-        console.log("You won the most rounds!");
-    } else {
-        console.log("You lost to a computer... :(")
-    }
-}
+const player = document.createElement("p");
+const computer = document.createElement("p");
+roundSummary.append(player, computer);
+
+let resultDisplay = document.querySelector(".results");
 
 
 let playerScore = 0;
 let computerScore = 0;
-game();
+
+
+const options = document.querySelectorAll("img");
+options.forEach(option => option.addEventListener("click", round));
+
+
+
