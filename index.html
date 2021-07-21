@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1 id="title">Rock Paper Scissors!</h1>
+    <div class="background">
+        <p class = "desc animate" id="desc1">
+            Welcome to an Epic Game of Rock, Paper, Scissors
+        </p>
+        <p class = "desc disappear" id="desc2">
+            It's You Against a Computer
+        </p>
+        <p class = "desc disappear" id="desc3">I Challenge YOU to Win 5 Rounds!</p>
+        <p class = "desc disappear initiate" id="desc4">Ready... Set... Go...</p>
+        
+    </div>
+
+    <div class="container" >
+        
+        <div class="score">
+            <p >Player:  <span id = "p-score"> 0</span> </p>
+            <p >Computer:  <span id = "c-score"> 0</span> </p>
+        </div>
+        
+        <h2 class = "instruction">Choose Your Weapon:</h2>
+        
+        <div class="options">
+            <div class="foreground" ><img src="images/rock.png" alt="rock" class = "rock"></div>
+            <div class="foreground"><img src="images/paper.png" alt="paper" class="paper"></div>
+            <div class="foreground"><img src="images/scissors.png" alt="scissors" class="scissors"></div>
+        </div> 
+
+        <div class="summary letter">
+            <p class="player"></p>
+            <p class="computer"></p>
+        </div>
+
+        <div class="results">
+
+        </div> 
+        
+    </div>
+    <div class="reset letter"></div>
+  
+    
+
+        
+    <script src = "source.js"></script>
+</body>
+</html>
