@@ -1,84 +1,176 @@
 *{
-    font-family: Roboto, sans-serif;
+    font-family: "trebuchet ms";
     font-weight: normal;
     margin: 0;
 }
 body{ 
-    background-color: gainsboro;
+    background-color: black;
     display: flex;
     flex-direction: column;
+    /* flex-wrap: nowrap; */
+    justify-content: center;
     align-items: center;
-    margin: 0;
+    margin: 10px;
+    color: white;
+    font-size: 24px;
 }
-
-
-.container {
-    width: 90%;
-    height: 400px;
-    background-color: white;
+.background{
     display: flex; 
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;    
-    border-radius: 10px;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-    padding-bottom: 20px;
-    margin-top: 50px;
-    position: relative;
-
-}
-
-.top{
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: absolute;
-    margin-top: 25px;
+}
+.desc{
+    margin: 20px;
+    position: relative;
+    
+}
+.letter{
+    opacity: 0;
+}
+
+.disappear, .container.disappear {
+    display: none;
+}
+
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    } 
+
+    to { 
+        opacity: 1;
+    }
 
 }
 
-span{
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 800ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.drop {
+    animation-name: drop;
+    animation-duration: 800ms;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes drop {
+
+    from {
+        font-size: 24px;
+        top: 0px;
+    }
+    to {
+        font-size: 40px;
+        top: 80px;
+    }
+}
+
+.container {
+    opacity: 0;
+    width: 80%;
+    height: 400px;
+    background-color:black;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding-bottom: 20px;
+
+}
+
+.score{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-end;
+    color: white;
+    margin: 25px 0 25px 0;
+
+}
+.score p{
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
+    letter-spacing: 0.1em;
+}
+
+p #p-score, p #c-score{
+    font-size: 20px;
     font-weight: bold;
     color: orangered;
 }
 
+.instruction{
+    font-size: 22px;
+    font-style: italic;
+    margin-top: 10px;
+
+}
+
 .options{
-    width: 100%;
+    width: 500px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 100px 0 25px 0;
-    position: absolute;
+    padding: 25px;
 }
 
-.options div {
-    background-color: yellow;
-    height: 100px;
-    width: 100px;
+.options .foreground{
+    height: 80px;
+    width: 80px; 
+    background-color: red;
     border-radius: 50%;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+
+.options .foreground:hover{
+    box-shadow: 0 0 20px 1px;
+    transform: scale(1.1);
 }
 
 img {
     height: 50px;
-    width: 50px;
-    
+    width: 50px; 
+}
+
+img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
 }
 
 .summary {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin:0px;
-    /* margin-top: 25px; */
-    color: black;
-    position: absolute;
-    margin-top: 230px;
+    margin: 0px;
+    height: 100px; 
+    width: 100%;
+    color: white;
 
 }
 
@@ -89,12 +181,12 @@ img {
 
 .results{
     height: 40px; 
-    width:40%;
+    width:50%;
     border-radius: 15px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:  330px;
+    padding: 5px;
     
 }
 
@@ -103,3 +195,19 @@ img {
     color: blue;
 
 } 
+
+.reset {
+    background-color: grey;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    margin: 50px;
+}
+
+.reset:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
